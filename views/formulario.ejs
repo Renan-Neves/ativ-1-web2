@@ -5,26 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario</title>
+    <script>
+        function recarregar(){
+            window.location.reload();
+        } 
+    </script>
 </head>
 <body>
-    <center><h1>Formulario</h1>
+    <center><h1>Informações</h1>
         <p>Nome: <%= `${usuario.nome}`%></p>
         <p>Sobrenome: <%= `${usuario.sobrenome}`%></p>
         <p>Idade: <%= `${usuario.idade}`%></p>
         <p>País: <%= `${usuario.país}`%></p>
         <br>
-        <h1>Alterar dados</h1>
-        <form action="/formularioAltera">
+        <h2>Formulario</h2>
+        <form action="/formularioAltera" method="post">
             <label for="nome">Nome:</label><br>
             <input type="text" name="nome"><br>
             <label for="sobrenome">Sobrenome:</label><br>
-            <input type="text" name="sobrenome"><br><br>
+            <input type="text" name="sobrenome"><br>
             <label for="idade">Idade:</label><br>
-            <input type="text" name="idade"><br><br>
+            <input type="number" name="idade"><br>
             <label for="país">País:</label><br>
             <input type="text" name="país"><br><br>
-            <input type="submit" value="Alterar"><br><br>
-          </form> 
+            <button type="submit" value="Alterar">Alterar</button><br><br>
+          </form>
+          <h2 style="color:red">Recarregue após alterar para mudar</h2>
+    <p><button style="background-color:red; font-size: 16px; font-weight: bold;" type="submit" onClick="recarregar()">Recarregar</button></p> 
+    <br>
     <a href="/"><button>Home</button></a></center>
 </body>
 </html>
