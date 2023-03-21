@@ -1,8 +1,13 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 var express = require('express');
 var app = express();
 var PORT = 3000;
 var bodyparser = require('body-parser');
+var usuario_1 = __importDefault(require("./usuario"));
 app.use(bodyparser.json());
 app.use(express.urlencoded({ extended: true }));
 //EJS
@@ -61,6 +66,17 @@ app.post('/mediaResultado', function (req, res) {
     var media = ((req.body.pratica * 2) + (req.body.prova * 5) + (req.body.trabalho * 3)) / 10;
     var calculoF = calculo(media);
     res.send("A m\u00E9dia do aluno \u00E9 ".concat(media, " e a classifica\u00E7\u00E3o \u00E9 ").concat(calculoF, "\n             <br><br><a href=\"/media\"><button>Home</button></a>"));
+});
+//ex3
+app.get('/formulario', function (req, res) {
+    res.render('formulario', { usuario: usuario });
+});
+var usuario = new usuario_1.default('nome', 'sobrenome', 'idade', 'país');
+app.post('/formularioAltera', function (req, res) {
+    usuario.nome = req.body.nome;
+    usuario.sobrenome = req.body.sobrenome;
+    usuario.idade = req.body.idade;
+    usuario.país = req.body.país;
 });
 app.listen(PORT, function () {
     console.log("http://localhost:".concat(PORT));

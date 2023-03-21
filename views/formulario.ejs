@@ -8,6 +8,23 @@
 </head>
 <body>
     <center><h1>Formulario</h1>
+        <p>Nome: <%= `${usuario.nome}`%></p>
+        <p>Sobrenome: <%= `${usuario.sobrenome}`%></p>
+        <p>Idade: <%= `${usuario.idade}`%></p>
+        <p>País: <%= `${usuario.país}`%></p>
+        <br>
+        <h1>Alterar dados</h1>
+        <form action="/formularioAltera">
+            <label for="nome">Nome:</label><br>
+            <input type="text" name="nome"><br>
+            <label for="sobrenome">Sobrenome:</label><br>
+            <input type="text" name="sobrenome"><br><br>
+            <label for="idade">Idade:</label><br>
+            <input type="text" name="idade"><br><br>
+            <label for="país">País:</label><br>
+            <input type="text" name="país"><br><br>
+            <input type="submit" value="Alterar"><br><br>
+          </form> 
     <a href="/"><button>Home</button></a></center>
 </body>
 </html>

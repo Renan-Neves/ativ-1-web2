@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const PORT = 3000
 const bodyparser = require('body-parser')
+import Usuario from "./usuario"
 
 app.use(bodyparser.json())
 app.use(express.urlencoded({ extended: true }))
@@ -73,9 +74,19 @@ app.post('/mediaResultado', function(req, res){
              <br><br><a href="/media"><button>Home</button></a>`)
 })
 
+//ex3
+app.get('/formulario', function(req, res){
+    res.render('formulario', {usuario: usuario})
+})
 
+let usuario = new Usuario('nome','sobrenome','idade', 'país')
 
-
+app.post('/formularioAltera', function(req, res){
+    usuario.nome = req.body.nome;
+    usuario.sobrenome = req.body.sobrenome;
+    usuario.idade = req.body.idade;
+    usuario.país = req.body.país;
+})
 
 
 app.listen(PORT, () => {
